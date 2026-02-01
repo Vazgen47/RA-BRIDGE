@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="hy">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Մեր մասին | RA BRIDGE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+
+<style>
+    /* --- ROOT VARIABLES --- */
+:root {
+    --bg: #0a0e17;
+    --bg2: #141b2b;
+    --gold: #c5a059;
+    --gold-hover: #d4b869;
+    --text: #ffffff;
+    --muted: #a0aec0;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-glass: rgba(197, 160, 89, 0.2);
+}
+
+/* --- GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+
+/* --- HEADER --- */
+header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 6%; background: rgba(10,14,23,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-glass); position: sticky; top: 0; z-index: 1000;
+}
+
+.logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-icon { 
+    width: 45px; height: 45px; background: var(--gold); border-radius: 10px; 
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+    transition: var(--transition); border: 1px solid rgba(197,160,89,0.3);
+}
+.logo-img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+.logo-text { color: var(--gold); font-size: 1.5rem; font-weight: 800; }
+.logo-container:hover .logo-icon { transform: scale(1.1); box-shadow: 0 0 15px rgba(197,160,89,0.5); }
+
+nav { display: flex; align-items: center; gap: 25px; }
+nav a { color: #fff; text-decoration: none; font-size: .9rem; font-weight: 500; transition: var(--transition); }
+nav a:hover { color: var(--gold); }
+
+.lang-switch { display: flex; gap: 8px; background: var(--bg2); padding: 5px 12px; border-radius: 20px; border: 1px solid var(--gold); }
+.lang-btn { color: var(--muted); cursor: pointer; font-size: 0.8rem; font-weight: bold; transition: var(--transition); }
+.lang-btn.active { color: var(--gold); }
+
+/* --- BURGER MENU --- */
+.burger { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+.burger span { width: 28px; height: 3px; background: var(--gold); border-radius: 2px; transition: var(--transition); }
+.burger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+.burger.active span:nth-child(2) { opacity: 0; }
+.burger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+/* --- MOBILE NAV --- */
+.mobile-nav { 
+    position: fixed; top: -100%; left: 0; width: 100%; height: 100vh; background: var(--bg2); 
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; 
+    padding: 40px 20px; transition: 0.5s ease; z-index: 999; border-bottom: 2px solid var(--gold); 
+}
+.mobile-nav.active { top: 70px; }
+.mobile-nav a { 
+    color: #fff; text-decoration: none; font-size: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s;
+}
+.mobile-nav a:hover { color: var(--gold); transform: scale(1.1); }
+
+/* --- HERO --- */
+.hero { padding: 100px 6% 60px; text-align: center; background: radial-gradient(circle at center, #1a233a 0%, #0a0e17 100%); }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); margin-bottom: 15px; }
+.hero h1 span { color: var(--gold); }
+
+/* --- CONTENT SECTION --- */
+.section { padding: 40px 6% 80px; max-width: 1200px; margin: auto; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.about-box { background: var(--bg2); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); }
+.about-box p { color: var(--muted); margin-bottom: 20px; font-size: 1.1rem; }
+.about-highlight { color: var(--gold); font-weight: 600; }
+
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+.f-card { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 18px; border: 1px solid transparent; transition: var(--transition); text-align: center; }
+.f-card:hover { border-color: var(--gold); background: var(--bg2); transform: translateY(-10px); }
+.f-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+
+/* --- FOOTER --- */
+.main-footer { background: #05070a; padding: 80px 6% 30px; border-top: 1px solid var(--border-glass); margin-top: 50px; }
+.footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 50px; }
+.footer-col h3 { color: var(--gold); font-size: 1.1rem; text-transform: uppercase; margin-bottom: 25px; position: relative; letter-spacing: 1px; }
+.footer-col h3::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 35px; height: 2px; background: var(--gold); }
+.footer-info p, .footer-list li { font-size: 0.9rem; opacity: 0.8; display: flex; align-items: center; gap: 10px; }
+.footer-info a, .legal-links a { color: #fff; text-decoration: none; transition: 0.3s; }
+.footer-info a:hover, .legal-links a:hover { color: var(--gold); transform: translateX(5px); }
+
+.footer-bottom { padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.developer-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; background: rgba(255,255,255,0.03); padding: 10px 18px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
+.developer-brand:hover { border-color: var(--gold); background: rgba(197,160,89,0.1); transform: translateY(-3px); }
+.dev-text { text-align: right; }
+.dev-text span { display: block; font-size: 0.6rem; color: var(--muted); }
+.dev-text strong { display: block; font-size: 0.85rem; color: var(--gold); }
+.dev-logo { width: 35px; height: 35px; background: var(--gold); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 900; border-radius: 8px; }
+
+/* --- MEDIA QUERIES --- */
+@media(max-width:992px) { .about-grid { grid-template-columns: 1fr; } }
+@media(max-width:768px) {
+    nav { display: none; } 
+    .burger { display: flex; }
+    .footer-bottom { justify-content: center; text-align: center; }
+    .dev-text { text-align: left; }
+}
+
+</style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container animate__animated animate__fadeInLeft">
+            <div class="logo-icon"><img src="logo.jpg" class="logo-img" alt="RA BRIDGE"></div>
+            <span class="logo-text">RA BRIDGE</span>
+        </a>
+
+        <nav class="animate__animated animate__fadeInDown">
+            <a href="index.html" data-key="nav-home">Գլխավոր</a>
+            <a href="index.html#pricing" data-key="nav-pricing">Սակագներ</a>
+            <a href="services.html" data-key="nav-services">Ծառայություններ</a>
+            <a href="about.html" data-key="nav-about">Մեր մասին</a>
+            <a href="contact.html" data-key="nav-contact">Կապ</a>
+            <div class="lang-switch">
+                <span class="lang-btn active" onclick="setLanguage('hy')">HY</span>
+                <span style="color:var(--gold)">|</span>
+                <span class="lang-btn" onclick="setLanguage('ru')">RU</span>
+            </div>
+        </nav>
+
+        <div class="burger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html" data-key="nav-home" onclick="toggleMenu()">Գլխավոր</a>
+        <a href="index.html#pricing" data-key="nav-pricing" onclick="toggleMenu()">Սակագներ</a>
+        <a href="services.html" data-key="nav-services" onclick="toggleMenu()">Ծառայություններ</a>
+        <a href="about.html" data-key="nav-about" onclick="toggleMenu()">Մեր մասին</a>
+        <a href="contact.html" data-key="nav-contact" onclick="toggleMenu()">Կապ</a>
+        <div class="lang-switch">
+                <span class="lang-btn active" onclick="setLanguage('hy')">HY</span>
+                <span style="color:var(--gold)">|</span>
+                <span class="lang-btn" onclick="setLanguage('ru')">RU</span>
+            </div>
+    </div>
+
+    <section class="hero">
+        <h1 class="animate__animated animate__zoomIn"><span data-key="hero-title">Մեր Մասին</span></h1>
+        <p data-key="hero-desc" class="animate__animated animate__fadeInUp">RA BRIDGE — ֆինանսական-տեխնոլոգիական պրոցեսինգային ընկերություն</p>
+    </section>
+
+    <section class="section">
+        <div class="about-grid">
+            <div class="about-box animate__animated animate__fadeInLeft">
+                <p data-key="about-p1">
+                    <span class="about-highlight">RA BRIDGE</span> ընկերությունը մասնագիտացած է cross-border վճարային փոխանցումների պրոցեսինգի և ֆինանսական գործարքների ուղեկցման մեջ։
+                </p>
+                <p data-key="about-p2">
+                    Մենք տրամադրում ենք ամբողջական տեխնիկական և գործառնական լուծումներ՝ միջազգային վճարների ընդունման, մշակման և վերահսկման համար։
+                </p>
+                <p data-key="about-p3">
+                    Մեր նպատակն է պարզեցնել երկրների միջև ֆինանսական հոսքերը՝ ապահովելով առավելագույն <span class="about-highlight">անվտանգություն</span>:
+                </p>
+            </div>
+
+            <div class="features animate__animated animate__fadeInRight">
+                <div class="f-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3 data-key="feat-1-t">Անվտանգություն</h3>
+                    <p data-key="feat-1-d">AML և KYC ընթացակարգերի խիստ պահպանում:</p>
+                </div>
+                <div class="f-card">
+                    <i class="fas fa-globe"></i>
+                    <h3 data-key="feat-2-t">Գլոբալ ցանց</h3>
+                    <p data-key="feat-2-d">Միջազգային վճարային լուծումներ ցանկացած բիզնեսի համար:</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h3 data-key="f-contact">Կոնտակտներ</h3>
+                <div class="footer-info">
+                    <p><strong>RA BRIDGE LLC</strong></p>
+                    <p><i class="fas fa-globe"></i> <span data-key="f-country">ՀՀ, ք. Երևան</span></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:rabridge7777@gmail.com">rabridge7777@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+37477063386">+374 77 063386</a></p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/79911229098" target="_blank">+7 991 122 90 98</a></p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3 data-key="l1-t">Compliance & Security</h3>
+                <p data-key="f-comp-desc" style="font-size: 0.85rem; opacity: 0.7; margin-bottom: 15px;">RA BRIDGE-ը մեծ ուշադրություն է դարձնում օրինական գործունեությանը և անվտանգությանը։</p>
+                <ul class="footer-list">
+                    <li><i class="fas fa-shield-alt"></i> AML Policy</li>
+                    <li><i class="fas fa-user-check"></i> KYC Process</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3 data-key="f-legal">Իրավական</h3>
+                <div class="legal-links">
+                    <a href="#"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
+                    <a href="#"><i class="fas fa-user-shield"></i> Privacy Policy</a>
+                    <a href="#"><i class="fas fa-handshake"></i> Public Offer</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 <strong>RA BRIDGE LLC</strong> | <span data-key="footer-rights">Բոլոր իրավունքները պաշտպանված են</span></p>
+            <a href="https://mkheyan-vazgen-portfolio.vercel.app" target="_blank" class="developer-brand">
+                <div class="dev-text"><span>Developed by</span><strong>MKHEYAN ENGINEERING</strong></div>
+                <div class="dev-logo">M</div>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const langData = {
+            hy: {
+                "nav-home": "Գլխավոր", "nav-pricing": "Սակագներ", "nav-services": "Ծառայություններ", "nav-about": "Մեր մասին", "nav-contact": "Կապ",
+                "hero-title": "Մեր Մասին", "hero-desc": "RA BRIDGE — ֆինանսական-տեխնոլոգիական պրոցեսինգային ընկերություն",
+                "about-p1": "RA BRIDGE ընկերությունը մասնագիտացած է cross-border վճարային փոխանցումների պրոցեսինգի և ֆինանսական գործարքների ուղեկցման մեջ։",
+                "about-p2": "Մենք տրամադրում ենք ամբողջական տեխնիկական և գործառնական լուծումներ՝ միջազգային վճարների ընդունման, մշակման և վերահսկման համար։",
+                "about-p3": "Մեր նպատակն է պարզեցնել երկրների միջև ֆինանսական հոսքերը՝ ապահովելով առավելագույն անվտանգություն:",
+                "feat-1-t": "Անվտանգություն", "feat-1-d": "AML և KYC ընթացակարգերի խիստ պահպանում:",
+                "feat-2-t": "Գլոբալ ցանց", "feat-2-d": "Միջազգային վճարային լուծումներ ցանկացած բիզնեսի համար:",
+                "footer-rights": "Բոլոր իրավունքները պաշտպանված են", "f-contact": "Կապ", "f-legal": "Իրավական",
+                "f-comp-desc": "RA BRIDGE-ը մեծ ուշադրություն է դարձնում օրինական գործունեությանը և անվտանգությանը։", "f-country": "ՀՀ, ք. Երևան"
+            },
+            ru: {
+                "nav-home": "Главная", "nav-pricing": "Тарифы", "nav-services": "Услуги", "nav-about": "О нас", "nav-contact": "Контакты",
+                "hero-title": "О Нас", "hero-desc": "RA BRIDGE — финансово-технологическая процессинговая компания",
+                "about-p1": "Компания RA BRIDGE специализируется на процессинге трансграничных платежей и сопровождении финансовых транзакций.",
+                "about-p2": "Мы предоставляем полные технические и операционные решения для приема, обработки и контроля международных платежей.",
+                "about-p3": "Наша цель — упростить финансовые потоки между странами, обеспечивая максимальную безопасность.",
+                "feat-1-t": "Безопасность", "feat-1-d": "Строгое соблюдение процедур AML и KYC.",
+                "feat-2-t": "Глобальная сеть", "feat-2-d": "Международные платежные решения для любого бизнеса.",
+                "footer-rights": "Все права защищены", "f-contact": "Контакты", "f-legal": "Юридическая информация",
+                "f-comp-desc": "RA BRIDGE уделяет большое внимание законности деятельности и безопасности.", "f-country": "РА, г. Ереван"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.innerText.toLowerCase() === lang));
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if(langData[lang][key]) el.innerText = langData[lang][key];
+            });
+        }
+
+        function toggleMenu() {
+            const nav = document.getElementById("mobileNav");
+            nav.classList.toggle("active");
+            const spans = document.querySelectorAll('.burger span');
+            if (nav.classList.contains("active")) {
+                spans[0].style.transform = "rotate(45deg) translate(6px, 6px)";
+                spans[1].style.opacity = "0";
+                spans[2].style.transform = "rotate(-45deg) translate(6px, -6px)";
+            } else {
+                spans.forEach(s => { s.style.transform = "none"; s.style.opacity = "1"; });
+            }
+        }
+    </script>
+</body>
+</html>
